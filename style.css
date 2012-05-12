@@ -1,8 +1,19 @@
 input {
+    font-family:monospace;
     padding:5px;
     font-size:18px;
     line-height:1.3em;
     height:30px;
     width:100%;
     margin-top:20px;
+}
+
+#result {
+    font-family:monospace;
+    font-size:18px;
+    margin-top:40px;
+}
+
+#result div {
+    margin:10px;
 }

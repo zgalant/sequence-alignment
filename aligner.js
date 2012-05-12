@@ -17,9 +17,6 @@ Aligner = {
             score:0,
         });
         
-        console.log("BEST");
-        console.log(best);
-        
         return {
             first:best.firstSoFar,
             second:best.secondSoFar,
