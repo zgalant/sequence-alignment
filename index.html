@@ -8,11 +8,18 @@
     	<link rel="stylesheet" href="style.css" />
 	</head>
 	<body>
-	    <div class="container">
+	    <div class="navbar navbar-fixed-top">
+	        <div class="navbar-inner">
+	            <div class="container">
+	            <a href="#" class="brand">Sequence Aligner</a>
+	            </div>
+            </div>
+	    </div>
+	    <div class="container" id="content">
     	    <div class="row-fluid">
-        	    <input type="text" id="first" placeholder="Enter the first strand"></input>
+        	    <input type="text" id="first" placeholder="Enter the first sequence"></input>
         	    <br/>
-        	    <input type="text" id="second" placeholder="Enter the second strand"></input>
+        	    <input type="text" id="second" placeholder="Enter the second sequence"></input>
         	    <br/>
         	    <div class="option">
             	    <label>Gap Penalty</label><input type="text" id="gap_penalty" value="-2"></input>
@@ -24,7 +31,7 @@
             	    <label>Match Score</label><input type="text" id="match_score" value="1"></input>
         	    </div>
         	    <div class="clear"></div>
-        	    <button id="align" class="btn btn-large">Align</button>
+        	    <button id="align" class="btn btn-large btn-primary">Align</button>
     	    </div>
     	    <div class="row-fluid">
         	    <div id="result">
