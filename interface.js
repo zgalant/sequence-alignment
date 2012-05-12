@@ -4,10 +4,7 @@ $(document).ready(function(){
         var first = $("#first").val();
         var second = $("#second").val();
         
-        var alignment = Aligner.align({
-            first:first,
-            second:second,
-        });
+        var alignment = Aligner.align(first, second);
         
         $("#firstResult").html(alignment.first);
         $("#secondResult").html(alignment.second);
