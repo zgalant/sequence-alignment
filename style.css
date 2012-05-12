@@ -1,5 +1,6 @@
 input {
     font-family:monospace;
+    text-transform:uppercase;
     padding:5px;
     font-size:18px;
     line-height:1.3em;
@@ -9,11 +10,23 @@ input {
 }
 
 #result {
-    font-family:monospace;
     font-size:18px;
     margin-top:40px;
 }
 
+#firstResult, #secondResult {
+    font-family:monospace;
+    text-transform:uppercase;
+}
+
 #result div {
     margin:10px;
+}
+
+.left {
+    float:left;
+}
+
+.clear {
+    clear:both;
 }
