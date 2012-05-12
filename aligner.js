@@ -5,7 +5,14 @@ Aligner = {
     MATCH_SCORE:1,
     
     
-    align: function(first, second) {
+    align: function(options) {
+        var first = options.first;
+        var second = options.second;
+        
+        Aligner.GAP_PENALTY = parseInt(options.gap_penalty);
+        Aligner.MISMATCH_PENALTY = parseInt(options.mismatch_penalty);
+        Aligner.MATCH_SCORE = parseInt(options.match_score);
+        
         var best = Aligner.recursivelyAlign({
             firstSoFar:"",
             secondSoFar:"",
@@ -13,6 +20,7 @@ Aligner = {
             second:second,
             score:0,
         });
+        console.log(best);
         
         return {
             first:best.firstSoFar,

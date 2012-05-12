@@ -1,3 +1,7 @@
+.container {
+    margin-top:50px;
+}
+
 input {
     font-family:monospace;
     text-transform:uppercase;
@@ -5,8 +9,15 @@ input {
     font-size:18px;
     line-height:1.3em;
     height:30px;
+}
+
+#first, #second {
     width:100%;
-    margin-top:20px;
+}
+
+#gap_penalty, #mismatch_penalty, #match_score {
+    width:60px;
+    text-align:center;
 }
 
 #result {
@@ -29,4 +40,9 @@ input {
 
 .clear {
     clear:both;
+}
+
+.option {
+    float:left;
+    margin-right:30px;
 }
