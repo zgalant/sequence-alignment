@@ -90,9 +90,3 @@ Aligner = {
         
     }
 }
-
-Aligner.align({
-    first:"ggaaaa",
-    second:"gaaaa",
-});
-
