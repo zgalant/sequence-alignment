@@ -46,6 +46,42 @@
         	        <div class="clear"></div>
         	    </div>
     	    </div>
+    	    <div class="row-fluid">
+    	        <h2>Sequence Alignment</h2>
+    	        <h3>Background</h3>
+    	        <p>
+    	            Say you are given two sequences of DNA, RNA, or Proteins, and you want to find the similarity between the two of them. 
+    	            Sequence Alignment is the method of finding similarity based on aligning two sequences together. Sequence alignment  
+    	            takes two sequences and scores their similarity based on pairwise comparisons. The goal of sequence alignment is to 
+    	            produce two sequences to maximize the similarity score. This may be done by inserting gaps into the sequences in order to 
+    	            create more matches and eliminate more mismatches. 
+	            </p>
+	            <p>
+	                When calculating the similarity score between two sequences, you assign a point value to each pair's similarity. 
+	                In this example, we use a match score, a mismatch penalty, and a gap penalty. When comparing two sequences, one of 
+	                these values is added to the similarity score for each pair.
+	            </p>
+	            <h3>Algorithm</h3>
+	            <p>
+	                There are several algorithms for aligning sequences. This site implements the Needleman-Wunsch algorithm, which is a recursive 
+	                algorithm based on dynamic programming. The algorithm works by considering the first character in each sequence. 
+	                The algorithm has 3 choices:
+	                <ol>
+	                    <li>Match the two characters together</li>
+	                    <li>Match the character from the first sequence with a gap</li>
+	                    <li>Match the character from the second sequence with a gap</li>
+	                </ol>
+	                The algorithm tries each of these options and recurses on a shorter string. Once one of the sequences is empty, it knows the total score 
+	                for this possible alignment. Since the algorithm tries all three cases, it exhaustively searches for the best score and updates 
+	                when it is found.
+	            </p>
+	            <h3>Significance</h3>
+	            <p>
+	                Sequence alignment is very useful in bioinformatics for identifying similar sequences. Sequences that descend from a common ancestor 
+	                are often analyzed to determine the evolutionary change that occurred. Also, alignment can be used to compare structural or functional 
+	                relationships between sequences. 
+	            </p>
+	        </div>
 	    </div>
 	</body>
 </html>
