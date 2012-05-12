@@ -1,8 +1,14 @@
 $(document).ready(function(){
-    
-    Aligner.align({
-        first:"ggaaaa",
-        second:"gaaaa",
+
+    $("#align").click(function() {
+        var first = $("#first").val();
+        var second = $("#second").val();
+        
+        Aligner.align({
+            first:first,
+            second:second,
+        });
+        
     });
 
 
