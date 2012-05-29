@@ -3,8 +3,7 @@ Aligner = {
     GAP_PENALTY:-2,
     MISMATCH_PENALTY:-1,
     MATCH_SCORE:1,
-    
-    
+
     align: function(options) {
         var first = options.first;
         var second = options.second;
@@ -14,35 +13,25 @@ Aligner = {
         Aligner.MATCH_SCORE = parseInt(options.match_score);
         
         var best = Aligner.recursivelyAlign({
-            firstSoFar:"",
-            secondSoFar:"",
             first:first,
             second:second,
-            score:0,
         });
         console.log(best);
         
         return {
-            first:best.firstSoFar,
-            second:best.secondSoFar,
+            first:best.first,
+            second:best.second,
             score:best.score,
         }
         
     },
     recursivelyAlign: function(options) {
-        if (options.first == "") {
+        if (options.first == "" || options.second == "") {
+            var len = Math.max(options.first.length, options.second.length);
             return {
-                firstSoFar:options.firstSoFar,
-                secondSoFar:options.secondSoFar + options.second,
-                score:options.score + options.second.length*Aligner.GAP_PENALTY,
-            };
-        }
-        
-        if (options.second == "") {
-            return {
-                firstSoFar:options.firstSoFar + options.first,
-                secondSoFar:options.secondSoFar,
-                score:options.score + options.first.length*Aligner.GAP_PENALTY,
+                first:options.first,
+                second:options.second,
+                score:len*Aligner.GAP_PENALTY,
             };
         }
         
@@ -52,23 +41,26 @@ Aligner = {
         
         // Case 1: Match the characters in both strands to each other
         var case1 = Aligner.recursivelyAlign({
-            firstSoFar:options.firstSoFar + firstChar,
-            secondSoFar:options.secondSoFar + secondChar,
-            score:options.score + match_penalty,
             first:options.first.substr(1),
             second:options.second.substr(1),
         });
         
+        case1.score += match_penalty;
+        case1.first = firstChar + case1.first;
+        case1.second = secondChar + case1.second; 
+        
         var bestCase = case1;
+        
         
         // Case 2: Match firstChar to a space
         var case2 = Aligner.recursivelyAlign({
-            firstSoFar:options.firstSoFar + firstChar,
-            secondSoFar:options.secondSoFar + " ",
-            score:options.score + Aligner.GAP_PENALTY,
             first:options.first.substr(1),
             second:options.second,
         });
+        
+        case2.score += Aligner.GAP_PENALTY;
+        case2.first = firstChar + case2.first;
+        case2.second = " " + case2.second;
         
         if (case2.score > bestCase.score) {
             bestCase = case2;
@@ -76,19 +68,18 @@ Aligner = {
         
         // Case 3: Match secondChar to a space
         var case3 = Aligner.recursivelyAlign({
-            firstSoFar:options.firstSoFar + " ",
-            secondSoFar:options.secondSoFar + secondChar,
-            score:options.score + Aligner.GAP_PENALTY,
             first:options.first,
             second:options.second.substr(1),
         });
+        
+        case3.score += Aligner.GAP_PENALTY;
+        case3.first = " " + case3.first;
+        case3.second = secondChar + case3.second;
         
         if (case3.score > bestCase.score) {
             bestCase = case3;
         }
         
         return bestCase;
-        
-        
     }
 }
